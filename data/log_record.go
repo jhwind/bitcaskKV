@@ -24,7 +24,7 @@ type LogRecord struct {
 }
 
 // LogRecord 的头部信息
-type logRecordHeader struct {
+type LogRecordHeader struct {
 	crc        uint32
 	recordType LogRecordType
 	keySize    uint32
@@ -103,13 +103,13 @@ func DecodeLogRecordPos(buf []byte) *LogRecordPos {
 }
 
 // 对字节数组中的 Header 信息进行解码
-func DecodeLogRecordHeader(buf []byte) (*logRecordHeader, int64) {
+func DecodeLogRecordHeader(buf []byte) (*LogRecordHeader, int64) {
 	// 如果 buf 长度不够 crc 长度，直接返回
 	if len(buf) <= 4 {
 		return nil, 0
 	}
 
-	header := &logRecordHeader{
+	header := &LogRecordHeader{
 		crc:        binary.LittleEndian.Uint32(buf[:4]),
 		recordType: buf[4],
 	}

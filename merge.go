@@ -3,7 +3,6 @@ package bitcaskkv
 import (
 	"bitcaskKV/data"
 	"bitcaskKV/utils"
-	"fmt"
 	"io"
 	"os"
 	"path"
@@ -246,7 +245,7 @@ func (db *DB) loadMergeFiles() error {
 		srcPath := filepath.Join(mergePath, fileName)
 		destPath := filepath.Join(db.options.DirPath, fileName)
 		if err := os.Rename(srcPath, destPath); err != nil {
-			fmt.Printf("HHHHHHHHHHHH")
+			// fmt.Printf("HHHHHHHHHHHH")
 			return err
 		}
 	}
